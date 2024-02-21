@@ -104,11 +104,25 @@
         background: none;
         color: #ff3417;
     }
+
+    .back-and-foward-btns-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 </style>
 
 <body class="noise">
 <main class="main-container" id="main-container">
     <div id="left-container" class="left">
+        <div class="back-and-foward-btns-container">
+            <button class="btn-next" onclick="previousRecomendation()">
+                Atras
+            </button>
+            <button class="btn-next" onclick="nextRecomendation()">
+                Siguiente
+            </button>
+        </div>
         <h1>
             Eryx recomienda:
         </h1>
@@ -116,9 +130,6 @@
         <div>
             <div class="images" id="images-container"></div>
         </div>
-        <button class="btn-next" onclick="nextRecomendation()">
-            Siguiente
-        </button>
     </div>
     <div id="right-container" class="right">
         <div id="select-partner" class="select-partner"></div>
@@ -671,8 +682,7 @@
             option.onclick = () => {
                 changeNameSelected(partner.name);
                 highlightSelected(partner.name);
-                const imagesContainer = document.getElementById('images-container');
-                imagesContainer.appendChild(createImages(partner.books));
+                createImages(partner.books);
                 partnerSelected = partner;
             }
             select.appendChild(option);
@@ -711,11 +721,11 @@
         const imagesContainer = document.getElementById('images-container');
         imagesContainer.innerHTML = '';
         images.forEach((imagePath) => {
-            const div = document.createElement('div');
-            div.appendChild(createImageFromBook(imagePath));
-            div.appendChild(createBookTitle(imagePath.title));
-            div.appendChild(createBookWriter(imagePath.writer));
-            imagesContainer.appendChild(div);
+            const newDiv = document.createElement('div');
+            newDiv.appendChild(createImageFromBook(imagePath));
+            newDiv.appendChild(createBookTitle(imagePath.title));
+            newDiv.appendChild(createBookWriter(imagePath.writer));
+            imagesContainer.appendChild(newDiv);
         });
         return imagesContainer;
     }
@@ -726,8 +736,7 @@
         partnerSelected = data[(index + 1) % data.length];
         changeNameSelected(partnerSelected.name);
         highlightSelected(partnerSelected.name);
-        const imagesContainer = document.getElementById('images-container');
-        imagesContainer.appendChild(createImages(partnerSelected.books));
+        createImages(partnerSelected.books);
     }
 
     function previousRecomendation() {
@@ -736,8 +745,7 @@
         partnerSelected = data[(index - 1 + data.length) % data.length];
         changeNameSelected(partnerSelected.name);
         highlightSelected(partnerSelected.name);
-        const imagesContainer = document.getElementById('images-container');
-        imagesContainer.appendChild(createImages(partnerSelected.books));
+        createImages(partnerSelected.books);
     }
 
     function createBookTitle(title) {
