@@ -1,0 +1,114 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: Roboto, sans-serif;
+}
+
+a {
+    all: unset;
+}
+
+.noise {
+    background: url(https://grainy-gradients.vercel.app/noise.svg);
+    background-color: #fffef200;
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #fb614a;
+}
+
+button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    padding: 0.8rem;
+}
+
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: row;
+    height: 100vh;
+}
+
+.images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+    flex-direction: row;
+    height: 600px;
+}
+
+.image {
+    width: 250px;
+    height: 380px;
+}
+
+.select-partner {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 3rem;
+}
+
+.partner-selected {
+    font-weight: bolder;
+    border: solid;
+    border-width: 2px;
+}
+
+.book-title {
+    color: #fb614a;
+    font-weight: bold;
+    max-width: 250px;
+}
+
+button:hover {
+    background: rgba(255, 185, 176, 0.64);
+}
+
+.right {
+    background: #fb614a;
+    height: 100%;
+    flex: 1;
+    padding-top: 2rem;
+    overflow-y: auto;
+}
+
+.left {
+    height: 100%;
+    flex: 4;
+    padding: 2rem 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.btn-next {
+    padding: 0;
+    color: #fb614a;
+    width: fit-content;
+}
+
+.btn-next:hover {
+    background: none;
+    color: #ff3417;
+}
+
+.back-and-foward-btns-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.select-rec-type-container {
+    background: blueviolet;
+    display: flex;
+    justify-content: space-around;
+}
