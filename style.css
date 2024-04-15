@@ -49,6 +49,7 @@ button {
     gap: 2.5rem;
     flex-direction: row;
     height: 600px;
+    margin-right: 100px;
 }
 
 .image {
