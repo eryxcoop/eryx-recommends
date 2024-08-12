@@ -96,8 +96,8 @@ button:hover {
 }
 
 ::-webkit-scrollbar {
-    width: 0;  /* Remove scrollbar space */
-    background: transparent;  /* Optional: just make scrollbar invisible */
+    width: 0; /* Remove scrollbar space */
+    background: transparent; /* Optional: just make scrollbar invisible */
 }
 
 .left {
@@ -123,7 +123,7 @@ button:hover {
 
 .back-and-foward-btns-container {
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -138,4 +138,53 @@ button:hover {
     border: #ff3417 solid;
     border-radius: 30px;
     padding: 5px 12px;
+}
+
+.open-game {
+    margin-right: 200px;
+}
+
+.open-game button {
+    background: #fb614a;
+    font-weight: bold;
+}
+
+.guess-container {
+    /*display: flex;*/
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    height: 100vh;
+    width: 100%;
+    display: none;
+}
+
+.guess-container select {
+    width: 30%;
+    min-width: 250px;
+    max-width: 300px;
+    height: 40px;
+}
+
+.guess-btn {
+    width: 30%;
+    min-width: 250px;
+    max-width: 300px;
+    height: 40px;
+    background: #fb614a;
+    font-weight: bold;
+}
+
+.close-game-btn {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    background: #fb614a;
+    font-weight: bold;
+}
+
+.counter-tag {
+    margin: 0;
 }

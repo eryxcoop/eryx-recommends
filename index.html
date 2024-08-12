@@ -4,33 +4,60 @@
 <link rel="stylesheet" href="style.css">
 
 <body class="noise">
-<main class="main-container" id="main-container">
-    <div id="left-container" class="left">
-        <div class="back-and-foward-btns-container">
-            <button class="btn-next" onclick="previousRecomendation()">
-                Atras / 
-            </button>
-            <button class="btn-next" onclick="nextRecomendation()">
-                 Siguiente
-            </button>
+<main>
+    <section class="guess-container" id="guess-container-id">
+        <button class="close-game-btn" onclick="closeGameSection()">
+            Cerrar
+        </button>
+        <h6 class="counter-tag" id="counter-id">
+            Contador: 0
+        </h6>
+        <h3>
+            Quién lo recomendó ?
+        </h3>
+        <div id="image-game-id">
+
         </div>
-        <h1>
-            Eryx recomienda:
-        </h1>
-        <div class="select-rec-type-container">
-            <button id="#books-btn" onclick="showCategory('books')">Libros</button>
-            <button id="#movies-btn" onclick="showCategory('movies')">Peliculas</button>
-            <button id="#albums-btn" onclick="showCategory('albums')">Discos</button>
-            <button id="#shows-btn" onclick="showCategory('shows')">Series</button>
+        <select id="select-category-id"></select>
+        <button class="guess-btn" onclick="guess()">
+            Adivinar
+        </button>
+    </section>
+    <section class="main-container" id="main-container">
+        <div id="left-container" class="left">
+            <div class="back-and-foward-btns-container">
+                <div>
+                    <button class="btn-next" onclick="previousRecomendation()">
+                        Atras /
+                    </button>
+                    <button class="btn-next" onclick="nextRecomendation()">
+                        Siguiente
+                    </button>
+                </div>
+                <div class="open-game">
+                    <button onclick="showGameSection()">
+                        🔮 Adivinar
+                    </button>
+                </div>
+            </div>
+            <h1>
+                Eryx recomienda:
+            </h1>
+            <div class="select-rec-type-container">
+                <button id="#books-btn" onclick="showCategory('books')">Libros</button>
+                <button id="#movies-btn" onclick="showCategory('movies')">Peliculas</button>
+                <button id="#albums-btn" onclick="showCategory('albums')">Discos</button>
+                <button id="#shows-btn" onclick="showCategory('shows')">Series</button>
+            </div>
+            <h3 id="name-selected"></h3>
+            <div>
+                <div class="images" id="images-container"></div>
+            </div>
         </div>
-        <h3 id="name-selected"></h3>
-        <div>
-            <div class="images" id="images-container"></div>
+        <div id="right-container" class="right">
+            <div id="select-partner" class="select-partner"></div>
         </div>
-    </div>
-    <div id="right-container" class="right">
-        <div id="select-partner" class="select-partner"></div>
-    </div>
+    </section>
 </main>
 </body>
 </html>

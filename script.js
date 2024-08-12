@@ -1047,6 +1047,9 @@ let partnerSelected = data[Math.floor(Math.random() * data.length)];
 
 let category = "books";
 
+let guessName = undefined;
+let counter = 0;
+
 const categories = [
   {name: 'books', btn: '#books-btn'},
   {name: 'movies', btn: '#movies-btn'},
@@ -1058,6 +1061,82 @@ function showCategory(newCategory) {
   category = newCategory;
   activateCategoryButtonSelected(category);
   createImages(partnerSelected[category]);
+}
+
+// Game
+
+function showGameSection() {
+  const gamesSection = document.getElementById('guess-container-id');
+  const mainSection = document.getElementById('main-container');
+  gamesSection.style.display = 'flex';
+  mainSection.style.display = 'none';
+
+  // populate select with id select-category-id with names in _data
+  const select = document.getElementById('select-category-id');
+  data.forEach((person) => {
+    const option = document.createElement('option');
+    option.textContent = person.name;
+    option.value = person.name;
+    select.appendChild(option);
+  });
+
+  generateGuess();
+
+  return select;
+}
+
+function closeGameSection() {
+  const gamesSection = document.getElementById('guess-container-id');
+  const mainSection = document.getElementById('main-container');
+  gamesSection.style.display = 'none';
+  mainSection.style.display = 'flex';
+  counter = 0;
+  updateCounter();
+}
+
+function generateGuess() {
+  // Get random image from _data constant
+  const randomPerson = data[Math.floor(Math.random() * data.length)];
+  const containerImg = document.getElementById('image-game-id');
+  containerImg.innerHTML = '';
+  let allRecs = allPartnersRecs(randomPerson);
+  const randomElement = allRecs[Math.floor(Math.random() * allRecs.length)];
+  const img = createImage(randomElement);
+  guessName = randomElement.title;
+  containerImg.appendChild(img);
+}
+
+function guess() {
+  const selectedPartnerName = document.getElementById('select-category-id').value;
+  const partner = data.find(partner => partner.name === selectedPartnerName);
+  let allRecs = allPartnersRecs(partner);
+  const isCorrect = allRecs.some(rec => rec.title === guessName);
+  if (isCorrect) {
+    generateGuess();
+    counter += 1;
+  } else {
+    alert('Incorrecto');
+    counter = 0;
+  }
+  updateCounter();
+}
+
+function updateCounter() {
+  const counterElement = document.getElementById('counter-id');
+  counterElement.textContent = 'Contador:' + counter;
+}
+
+function allPartnersRecs(partner) {
+  let allRecs = [];
+  for (const key in partner) {
+    if (key === 'name') {
+      continue;
+    }
+    if (categories.map(cat => cat.name).includes(key)) {
+      allRecs = allRecs.concat(partner[key]);
+    }
+  }
+  return allRecs;
 }
 
 function activateCategoryButtonSelected(category) {
@@ -1112,17 +1191,24 @@ function createElementImage(book) {
 
 function createImages(images) {
   const imagesContainer = document.getElementById('images-container');
-  imagesContainer.innerHTML = '';
   if (images) {
+    imagesContainer.innerHTML = '';
     images.forEach((imagePath) => {
-      const newDiv = document.createElement('div');
-      newDiv.appendChild(createElementImage(imagePath));
-      newDiv.appendChild(createElementTitle(imagePath.title));
-      newDiv.appendChild(createElementWriter(imagePath.writer));
+      const newDiv = createImage(imagePath);
       imagesContainer.appendChild(newDiv);
     });
+  } else {
+    imagesContainer.innerHTML = "No hay recomendaciones";
   }
   return imagesContainer;
+}
+
+function createImage(imagePath) {
+  const newDiv = document.createElement('div');
+  newDiv.appendChild(createElementImage(imagePath));
+  newDiv.appendChild(createElementTitle(imagePath.title));
+  newDiv.appendChild(createElementWriter(imagePath.writer));
+  return newDiv;
 }
 
 function nextRecomendation() {
