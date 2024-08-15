@@ -40,7 +40,7 @@ button {
     justify-content: center;
     align-items: flex-start;
     flex-direction: row;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 .images {
@@ -93,6 +93,55 @@ button:hover {
     overflow-y: auto;
     position: fixed;
     width: 200px;
+}
+
+.open-menu-btn {
+    display: none;
+}
+
+.right-open {
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap:1rem;
+    background: #fb614a;
+    height: 100%;
+    flex: 1;
+    padding-top: 2rem;
+    right: 0;
+    overflow-y: auto;
+}
+
+@media (max-width: 900px) {
+    .right {
+        display: none;
+    }
+
+    .left-close {
+        display: none;
+    }
+
+    .images{
+        justify-content: space-between;
+    }
+
+    .back-and-foward-btns-container {
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 1rem;
+        align-items: flex-start !important;
+    }
+
+    .open-menu-btn {
+        position: absolute;
+        display: block;
+        top: 5%;
+        right: 5%;
+        background: #fb614a;
+        font-weight: bold;
+    }
 }
 
 ::-webkit-scrollbar {
