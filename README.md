@@ -18,3 +18,11 @@ Book recomendations from our eryx team ❤️
 
 2. Subir los cambios
 3. Listo :)
+
+
+      {
+        image: "",
+        link: "",
+        title: "",
+        writer: ""
+      },
